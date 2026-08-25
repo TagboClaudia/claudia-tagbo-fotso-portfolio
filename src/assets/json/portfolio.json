@@ -1,0 +1,514 @@
+{
+  "portfolio_metadata": {
+    "owner": "Claudia Tagbo-Fotso",
+    "title": "Data Science Analyst | AI & Machine Learning | Strategy & Analytics",
+    "tagline": "Turning fragmented data into unified, actionable insights — Python, SQL, ML & BI.",
+    "location": "Berlin, Germany",
+    "email": "tagbo.fotso@gmail.com",
+    "phone": "+49 176 64323853",
+    "linkedin": "https://www.linkedin.com/in/claudia-fotso",
+    "github": "https://github.com/TagboClaudia",
+    "portfolio_url": "https://github.com/TagboClaudia/traveltide",
+    "created_date": "2025-05-01",
+    "last_updated": "2026-08-23",
+    "version": "1.0.0",
+    "total_projects": 7,
+    "languages_primary": "Python",
+    "languages_secondary": ["SQL"],
+    "color_palette": {
+      "primary_navy": "#1F3B57",
+      "teal": "#2C7A7B",
+      "aqua": "#4FB3BF",
+      "description": "Navy + Teal Palette (Scientific & Professional) - reflects analytical rigor, clarity, and a physics-rooted precision"
+    }
+  },
+  "summary": {
+    "elevator_pitch": "Data Science Analyst with a strong quantitative background in Applied Physics (M.Sc.) and hands-on experience in machine learning, analytics, and AI-driven problem solving. Combines analytical rigor with business-oriented thinking to design and implement data-driven solutions from prototype to production, with a special focus on customer segmentation, SQL data pipelines, and BI storytelling. Passionate about leveraging modern AI technologies, including generative AI and RAG concepts, to create measurable business value.",
+    "key_achievements": [
+      "Improved measurement accuracy by 15% while managing 300+ weekly high-precision experimental datasets at PTB",
+      "Reduced data-workflow inefficiencies by 20% and increased operational capacity by 25%",
+      "Built a unified SQL CTE pipeline joining 5.4M+ sessions with user, flight, and hotel data for TravelTide",
+      "Engineered 50+ behavioral features (RFM metrics, conversion rates, session activity) across 49,211 sessions from 5,998 customers",
+      "Applied rule-based and K-Means clustering for customer segmentation, validated with χ², t-test, and Mann–Whitney U statistical testing"
+    ],
+    "years_experience": {
+      "applied_physics_engineering": "7+",
+      "data_science": "1+ (since May 2025)",
+      "industry_projects": "7+ projects"
+    }
+  },
+  "skills": {
+    "technical": {
+      "data_science": [
+        "Data Cleaning", "Exploratory Data Analysis (EDA)", "Statistical Analysis",
+        "Funnel Analysis", "Segmentation Analysis", "KPI Analysis", "Feature Engineering"
+      ],
+      "machine_learning": [
+        "Regression", "Classification", "Clustering (KMeans, DBSCAN)", "Model Evaluation",
+        "Cross-Validation", "Supervised & Unsupervised Learning", "PCA"
+      ],
+      "generative_ai": [
+        "Basic knowledge of Generative AI", "RAG concepts"
+      ],
+      "data_visualization": [
+        "Tableau", "Power BI", "Matplotlib", "Plotly", "Dashboard Design", "Data Visualization"
+      ],
+      "databases": [
+        "SQL", "PostgreSQL", "SQLAlchemy", "CTEs", "Window Functions", "Relational Joins"
+      ],
+      "programming": [
+        "Python (Pandas, Scikit-learn, NumPy)", "SQL", "Basic understanding of Spark"
+      ],
+      "scientific_technical": [
+        "Experimental Data Analysis", "Measurement Optimization", "Optical Characterization",
+        "Quantitative Analysis", "Method Validation", "Quality Control", "Error Analysis"
+      ]
+    },
+    "soft": [
+      "Analytical Problem-Solving", "Clear Communication of Technical Insights",
+      "Teamwork", "Attention to Detail", "Technical Documentation"
+    ],
+    "languages": [
+      { "language": "French", "proficiency": "Native" },
+      { "language": "German", "proficiency": "C2" },
+      { "language": "English", "proficiency": "B2" }
+    ]
+  },
+  "education": [
+    {
+      "institution": "Masterschool",
+      "degree": "Data Science Training Program",
+      "period": { "start": "2025-05", "end": "Present" },
+      "highlights": [
+        "Acquires hands-on experience analyzing large datasets with Python, SQL, and Pandas to extract meaningful insights",
+        "Develops data-driven reports and visualizations using Tableau, Power BI, and Matplotlib",
+        "Applies statistical analysis and predictive modeling techniques, implementing ML algorithms, regression models, and clustering methods"
+      ]
+    },
+    {
+      "institution": "Berliner Hochschule für Technik",
+      "degree": "M.Sc. Applied Physics – Medical Engineering",
+      "period": { "start": "2014-10", "end": "2018-05" },
+      "highlights": [
+        "Applied quantitative analysis and experimental data processing to high-precision optical and imaging measurement data",
+        "Developed and validated a spatially resolved measurement method, improving accuracy and reliability of evaluation metrics",
+        "Analyzed and interpreted experimental results from optical and imaging systems for technical evaluation and optimization decisions"
+      ]
+    },
+    {
+      "institution": "Berliner Hochschule für Technik",
+      "degree": "B.Sc. Applied Physics – Medical Engineering",
+      "period": { "start": "2011-04", "end": "2014-11" },
+      "highlights": [
+        "Analyzed quantitative performance data from a medical X-ray imaging system to support system optimization",
+        "Evaluated measurement results and performance metrics to improve diagnostic reliability in a clinical environment"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Physikalisch-Technische Bundesanstalt (PTB)",
+      "role": "Engineer",
+      "period": { "start": "2017-05", "end": "2024-12" },
+      "location": "Berlin, Germany",
+      "responsibilities": [
+        "Conducted and evaluated more than 300 high-precision measurements per week in scientific research projects",
+        "Developed, optimized, and validated measurement methods for characterizing optical systems and components",
+        "Ensured the quality and reliability of experimental data through systematic testing and validation procedures",
+        "Analyzed complex measurement data and identified/assessed deviations and uncertainties",
+        "Produced scientific reports, technical documentation, and presentations of research results",
+        "Contributed to the commissioning and further development of measurement stations and research facilities",
+        "Collaborated with interdisciplinary teams of scientists, engineers, and technical specialists",
+        "Managed and analyzed high-volume experimental datasets (300+ weekly), improving measurement accuracy by 15%",
+        "Optimized data workflows and experimental processes, reducing inefficiencies by 20% and increasing operational capacity by 25%"
+      ]
+    }
+  ],
+  "certifications": [],
+  "categories": [
+    {
+      "category_id": 1,
+      "name": "🧩 Customer Analytics & Segmentation",
+      "icon": "🧩",
+      "color": "#1F3B57",
+      "description": "End-to-end ML segmentation and perk-assignment systems turning raw travel session data into actionable customer cohorts"
+    },
+    {
+      "category_id": 2,
+      "name": "🗄️ SQL Data Engineering & Pipelines",
+      "icon": "🗄️",
+      "color": "#2C7A7B",
+      "description": "Modular, production-grade SQL pipelines for loading, filtering, and enriching multi-source relational data"
+    },
+    {
+      "category_id": 3,
+      "name": "📊 Business Intelligence & Dashboards",
+      "icon": "📊",
+      "color": "#4FB3BF",
+      "description": "Interactive Tableau dashboards translating raw datasets into clear, decision-ready visual stories"
+    },
+    {
+      "category_id": 4,
+      "name": "🎯 SQL Practice & Database Mastery",
+      "icon": "🎯",
+      "color": "#1F3B57",
+      "description": "Structured SQL interview-preparation work demonstrating joins, subqueries, and hierarchical queries"
+    }
+  ],
+  "projects": [
+    {
+      "project_id": 1,
+      "name": "TravelTide Analytics Engine (Core Module)",
+      "category_id": 1,
+      "icon": "🧩",
+      "color": "#1F3B57",
+      "github_url": "https://github.com/TagboClaudia/traveltide/tree/main/core",
+      "description": "The analytical engine of the TravelTide project: a modular Python package handling data ingestion (CSV/SQL/DB), EDA, feature engineering (PCA, clustering, normalization), ML-based segmentation (KMeans, DBSCAN), perk assignment, and non-ML segment reporting — designed for scalability and reusability.",
+      "business_insights": [
+        "A single modular pipeline (utils → load_data → eda → advance_metrics → perk_assignment → segment_analyse) makes customer segmentation and perk personalization reproducible end-to-end",
+        "Separating ML-based clustering from non-ML segment analysis lets business stakeholders validate findings through two independent lenses",
+        "Centralized data loading with auto-caching to CSV keeps repeated DB queries fast and consistent across notebooks"
+      ],
+      "technologies": ["Python 3.8+", "Pandas 2.0+", "Scikit-learn 1.0+", "Plotly 5.0+", "SQLAlchemy 1.4+"],
+      "key_metrics": {
+        "core_modules": 6,
+        "pipeline_stages": "Load → EDA → Feature Engineering → ML Segmentation → Perk Assignment → Reporting",
+        "clustering_algorithms": "KMeans, DBSCAN"
+      },
+      "project_statistics": {
+        "python_modules": 6,
+        "clustering_methods_supported": 2,
+        "visualization_functions": "2D/3D PCA (plot_2d, plot_3d)",
+        "perk_assignment_steps": 6,
+        "segment_analysis_capabilities": 7
+      },
+      "suggested_visualizations": [
+        "Flowchart of the 6-module architecture (utils → load_data → eda → advance_metrics → perk_assignment → segment_analyse)",
+        "2D/3D PCA scatter plots colored by cluster assignment",
+        "Perk-assignment matrix mapping clusters to scored perks",
+        "Correlation heatmap from correlation_analysis()",
+        "Segment comparison bar charts from segment_analyse.py"
+      ],
+      "technical_details_missing": [
+        "Feature standardization via StandardScaler prior to KMeans/DBSCAN",
+        "PCA feature importance ranking used to interpret cluster drivers",
+        "Cluster profiling step before perk scoring to ensure business relevance",
+        "Auto-caching of DB query results to CSV to avoid redundant queries",
+        "Runner script (run_pipeline.py) to automate the full workflow end-to-end"
+      ],
+      "sql_insights": [
+        "Built a PostgreSQL connection layer (get_db_connection) with reusable SQL execution helpers (execute_sql, execute_sql_file)",
+        "Centralized SQL/CSV/DB loading through a single load_table() interface",
+        "Implemented datetime conversion and duration-calculation utilities for time-based SQL fields"
+      ],
+      "ai_insights": [
+        "Implemented KMeans and DBSCAN clustering for behavioral segmentation",
+        "Used PCA for dimensionality reduction and feature importance analysis",
+        "Built a perk-scoring and unique perk-assignment system on top of cluster profiles"
+      ],
+      "last_updated": "2026-08-23",
+      "keywords": ["segmentation", "clustering", "PCA", "perk assignment", "feature engineering", "TravelTide"]
+    },
+    {
+      "project_id": 2,
+      "name": "User Session Analytics Pipeline (SQL CTE Architecture)",
+      "category_id": 2,
+      "icon": "🗄️",
+      "color": "#2C7A7B",
+      "github_url": "https://github.com/TagboClaudia/traveltide/tree/main/sql",
+      "description": "A production-grade SQL pipeline built with Common Table Expressions that filters sessions to a defined time window, identifies high-engagement users (>7 sessions), and enriches them with demographic, flight, and hotel data into a single analytical dataset for BI, churn modeling, and segmentation.",
+      "business_insights": [
+        "Users with more than 7 sessions are disproportionately likely to book flights, add hotels, and use discounts",
+        "The unified dataset enables discount-elasticity and promotion-effectiveness analysis despite sparse discount-amount fields",
+        "Home airport, family status, and age correlate with trip distance, hotel nights, and airline choice, supporting demographic-driven personalization"
+      ],
+      "technologies": ["PostgreSQL", "SQL (CTEs)", "Relational Joins"],
+      "key_metrics": {
+        "cte_stages": 3,
+        "session_filter_date": "> 2023-01-04",
+        "engagement_threshold": "> 7 sessions",
+        "tables_joined": 4
+      },
+      "project_statistics": {
+        "ctes_defined": 3,
+        "source_tables": "sessions, users, flights, hotels",
+        "output_grain": "One row per session",
+        "segmentation_rule": "HAVING COUNT(session_id) > 7"
+      },
+      "suggested_visualizations": [
+        "Pipeline architecture diagram: sessions_2023 → filtered_users → session_base → final SELECT",
+        "Funnel chart from raw sessions to high-engagement, enriched sessions",
+        "Bar chart comparing booking rates for high-engagement vs. all users",
+        "Left-join enrichment diagram showing user/flight/hotel attribute additions"
+      ],
+      "technical_details_missing": [
+        "CTE 1 (sessions_2023) pre-filters by date to improve downstream join performance",
+        "CTE 2 (filtered_users) aggregates session counts per user before applying the HAVING threshold",
+        "CTE 3 (session_base) performs left joins to preserve session-level granularity",
+        "Attributes enriched: birthdate, gender, marital status, children, home airport (lat/lon), sign-up date, flight itinerary, hotel stay details"
+      ],
+      "sql_insights": [
+        "Used a 3-stage CTE architecture for readability, maintainability, and production-readiness",
+        "Applied time-window filtering to restrict analysis to relevant, recent behavior",
+        "Used LEFT JOINs to preserve session-level rows even when flight/hotel data is absent"
+      ],
+      "ai_insights": [],
+      "last_updated": "2026-08-23",
+      "keywords": ["SQL", "CTE", "session analytics", "data enrichment", "power users", "TravelTide"]
+    },
+    {
+      "project_id": 3,
+      "name": "TravelTide Data Loading & Quality Assessment",
+      "category_id": 2,
+      "icon": "📥",
+      "color": "#2C7A7B",
+      "github_url": "https://github.com/TagboClaudia/traveltide/tree/main/notebooks/loader",
+      "description": "The foundational data-loading and quality-assessment layer for the TravelTide pipeline. Loads raw data from CSV/SQL sources, runs missing-value diagnostics across all tables, and produces the enriched base_sessions dataset used for all downstream analysis.",
+      "business_insights": [
+        "The users table is 100% complete across all 11 demographic columns, enabling confident user-level personalization",
+        "Only 43.19% of sessions have a trip_id, revealing significant window-shopping behavior worth retargeting",
+        "83–87% missing discount-amount fields suggest binary discount indicators are more reliable than raw amounts for elasticity modeling"
+      ],
+      "technologies": ["Python 3.11+", "Pandas", "PostgreSQL", "SQL"],
+      "key_metrics": {
+        "users_rows": "1,020,926",
+        "sessions_rows": "5,408,063",
+        "flights_rows": "1,901,038",
+        "hotels_rows": "1,918,617",
+        "base_sessions_rows": "49,211"
+      },
+      "project_statistics": {
+        "base_sessions_columns": 41,
+        "trip_id_missing_pct": "56.81%",
+        "flight_discount_amount_missing_pct": "83.62%",
+        "hotel_discount_amount_missing_pct": "87.22%",
+        "return_time_missing_pct": "4.67%",
+        "median_base_fare_usd": 381.77,
+        "median_hotel_rate_usd": 148
+      },
+      "suggested_visualizations": [
+        "Entity-relationship diagram: users → sessions → flights/hotels → base_sessions",
+        "Missing-value heatmap across the four source tables",
+        "Distribution plots for page_clicks, base_fare_usd, and nights",
+        "Bar chart of round-trip (95.3%) vs. one-way flight bookings"
+      ],
+      "technical_details_missing": [
+        "base_sessions is derived by filtering sessions after Jan 4, 2023 and keeping users with >7 sessions",
+        "SQL execution results are auto-cached to /data/processed/session_base.csv",
+        "Negative values found in the nights column flagged for validation-rule improvements",
+        "Numerical summary statistics (mean, quartiles, std) computed for all key booking features"
+      ],
+      "sql_insights": [
+        "Executed the CTE-based session_base SQL query to construct the enriched base_sessions dataset",
+        "Used execute_sql/load_table utilities to load raw and processed tables interchangeably"
+      ],
+      "ai_insights": [],
+      "last_updated": "2026-08-23",
+      "keywords": ["data quality", "EDA", "missing values", "data loading", "TravelTide"]
+    },
+    {
+      "project_id": 4,
+      "name": "Customer Segmentation & Performance Analysis",
+      "category_id": 1,
+      "icon": "🎯",
+      "color": "#1F3B57",
+      "github_url": "https://github.com/TagboClaudia/traveltide",
+      "description": "Rule-based and K-Means clustering segmentation on 49K TravelTide user sessions from 5,998 customers to identify behavioral patterns and drive targeted retention strategies, validated with statistical A/B testing.",
+      "business_insights": [
+        "Identified high-value customer segments and developed data-driven recommendations for targeted incentives and retention strategies",
+        "Statistical testing (χ², t-test, Mann–Whitney U) confirmed measurable subscription uplift for targeted campaigns"
+      ],
+      "technologies": ["Python", "Scikit-learn (KMeans)", "Pandas", "SciPy (statistical testing)"],
+      "key_metrics": {
+        "user_sessions_analyzed": "49,211",
+        "unique_customers": "5,998",
+        "behavioral_features_engineered": "50+"
+      },
+      "project_statistics": {
+        "segmentation_methods": "Rule-based + K-Means clustering",
+        "feature_categories": "RFM metrics, conversion rates, session activity",
+        "statistical_tests_used": ["Chi-square (χ²)", "t-test", "Mann–Whitney U"]
+      },
+      "suggested_visualizations": [
+        "Cluster scatter plot (2D projection) of the 5,998 customers",
+        "RFM feature distribution by segment",
+        "A/B test results panel showing subscription uplift with p-values",
+        "Segment-to-incentive recommendation matrix"
+      ],
+      "technical_details_missing": [
+        "50+ behavioral features engineered from RFM (recency, frequency, monetary), conversion rate, and session-activity signals",
+        "Combined rule-based heuristics with K-Means clustering for cross-validated segment definitions",
+        "Used non-parametric Mann–Whitney U alongside t-tests to handle non-normal spending distributions"
+      ],
+      "sql_insights": [
+        "Sourced segmentation features from the TravelTide base_sessions dataset built via the SQL CTE pipeline"
+      ],
+      "ai_insights": [
+        "Implemented K-Means clustering for behavioral segmentation",
+        "Engineered RFM and engagement features for customer scoring",
+        "Applied statistical hypothesis testing to validate segment-driven campaign performance"
+      ],
+      "last_updated": "2025-12-01",
+      "keywords": ["customer segmentation", "K-Means", "RFM", "A/B testing", "retention"]
+    },
+    {
+      "project_id": 5,
+      "name": "FIFA 2023 Player Performance Analytics",
+      "category_id": 3,
+      "icon": "⚽",
+      "color": "#4FB3BF",
+      "github_url": "",
+      "description": "Analyzed FIFA 2023 player datasets with Python and SQL to identify trends in player performance, market value, and team composition, then built interactive Tableau dashboards for cross-league, cross-nation, and cross-position comparison.",
+      "business_insights": [
+        "Data-driven insights support scouting, player valuation, and transfer decision-making through visual storytelling",
+        "Clustering and segmentation techniques surfaced player performance patterns and potential value drivers"
+      ],
+      "technologies": ["Python", "SQL", "Tableau"],
+      "key_metrics": {
+        "dashboard_type": "Interactive Tableau (published)",
+        "comparison_dimensions": "Leagues, nations, positions"
+      },
+      "project_statistics": {
+        "analysis_scope": "Player performance, market value, team composition",
+        "clustering_applied": true
+      },
+      "suggested_visualizations": [
+        "Player value vs. performance scatter plot with cluster coloring",
+        "League/position comparison radar chart",
+        "Interactive Tableau dashboard screenshot"
+      ],
+      "technical_details_missing": [
+        "Applied clustering and segmentation techniques to group players by performance profile",
+        "Built Tableau dashboards enabling attribute comparison across leagues, nations, and positions"
+      ],
+      "sql_insights": [
+        "Used SQL to query and prepare the FIFA 2023 player dataset prior to analysis"
+      ],
+      "ai_insights": [
+        "Applied clustering/segmentation to identify player performance patterns and value drivers"
+      ],
+      "last_updated": "2025-08-01",
+      "keywords": ["Tableau", "sports analytics", "clustering", "player valuation"]
+    },
+    {
+      "project_id": 6,
+      "name": "Unicorn Sales & KPI Dashboard",
+      "category_id": 3,
+      "icon": "📈",
+      "color": "#4FB3BF",
+      "github_url": "",
+      "description": "Developed an interactive Tableau dashboard integrating multiple data sources to analyze sales, profit, and key performance indicators, enabling stakeholders to quickly identify high- and low-performing products and categories.",
+      "business_insights": [
+        "Enabled stakeholders to quickly identify high- and low-performing areas, supporting more informed business decisions",
+        "Uncovered growth opportunities through KPI analysis across revenue, profit, and product performance"
+      ],
+      "technologies": ["Tableau", "Python", "SQL"],
+      "key_metrics": {
+        "dashboard_type": "Interactive Tableau (published)",
+        "kpis_tracked": "Revenue, profit, product performance"
+      },
+      "project_statistics": {
+        "data_sources_integrated": "Multiple",
+        "analysis_focus": "Profitability drivers, performance trends by product/category"
+      },
+      "suggested_visualizations": [
+        "KPI summary dashboard (revenue, profit, margin)",
+        "Product/category performance ranking bar chart",
+        "Trend line of sales and profit over time"
+      ],
+      "technical_details_missing": [
+        "Integrated multiple data sources into a single Tableau data model",
+        "Identified profitability drivers and performance trends across products and categories"
+      ],
+      "sql_insights": [
+        "Used SQL to consolidate and clean multiple source datasets prior to Tableau ingestion"
+      ],
+      "ai_insights": [],
+      "last_updated": "2025-08-01",
+      "keywords": ["Tableau", "KPI dashboard", "sales analytics", "business intelligence"]
+    },
+    {
+      "project_id": 7,
+      "name": "Chinook Mock Interview Notebook",
+      "category_id": 4,
+      "icon": "🎵",
+      "color": "#1F3B57",
+      "github_url": "https://github.com/TagboClaudia/Data-Science/blob/main/Chinook_MockInterview.ipynb",
+      "description": "A comprehensive SQL/database mock-interview notebook built on the Chinook digital media store database, covering customer analysis, geographical distribution, employee analysis, customer-support joins, and hierarchical self-joins — connected live to a PostgreSQL instance on Neon.tech.",
+      "business_insights": [
+        "Demonstrates end-to-end SQL interview readiness: filtering, joins, subqueries, NULL handling, and hierarchical queries",
+        "Query patterns map directly to real-world use cases in customer analytics, sales analysis, and organizational reporting"
+      ],
+      "technologies": ["PostgreSQL", "SQLAlchemy", "Pandas", "Neon.tech"],
+      "key_metrics": {
+        "database_tables": "9 (Album, Artist, Customer, Employee, Invoice, InvoiceLine, Track, Genre, MediaType, Playlist)",
+        "query_categories_covered": 5,
+        "skills_demonstrated": 8
+      },
+      "project_statistics": {
+        "brazilian_customers_found": 5,
+        "french_cities_identified": 4,
+        "employees_hired_2003": 3,
+        "north_american_customers": 21,
+        "jane_peacock_customer_countries": 10
+      },
+      "suggested_visualizations": [
+        "Chinook schema ERD (Customer, Employee, Invoice, Track, Album, Artist, Genre, MediaType, Playlist)",
+        "Customer count by country bar chart",
+        "Employee hire-date timeline",
+        "Self-join organizational hierarchy tree diagram"
+      ],
+      "technical_details_missing": [
+        "Used a RIGHT JOIN self-referencing pattern to map support reps to their customer base",
+        "Built a self-join on employee.reports_to to reconstruct the organizational hierarchy",
+        "Applied BETWEEN clauses for hire-date range filtering and IS NOT NULL for company-field cleaning"
+      ],
+      "sql_insights": [
+        "Wrote filtering, JOIN, DISTINCT, date-range, NULL-handling, hierarchical self-join, and subquery examples",
+        "Connected to a live PostgreSQL Chinook instance via SQLAlchemy for reproducible query execution"
+      ],
+      "ai_insights": [],
+      "last_updated": "2026-08-23",
+      "keywords": ["SQL", "Chinook", "interview prep", "joins", "subqueries", "PostgreSQL"]
+    }
+  ],
+  "color_scheme": {
+    "primary_navy": { "hex": "#1F3B57", "name": "Primary Navy", "usage": "Main heading, category color 1, 4", "rgb": "rgb(31, 59, 87)" },
+    "teal": { "hex": "#2C7A7B", "name": "Teal", "usage": "Secondary heading, category color 2", "rgb": "rgb(44, 122, 123)" },
+    "aqua": { "hex": "#4FB3BF", "name": "Aqua", "usage": "Accent highlights, category color 3", "rgb": "rgb(79, 179, 191)" }
+  },
+  "summary_statistics": {
+    "total_categories": 4,
+    "total_projects": 7,
+    "primary_focus_areas": [
+      "Customer Segmentation", "SQL Data Engineering", "Business Intelligence Dashboards", "SQL Fundamentals & Interview Prep"
+    ],
+    "technology_stack": [
+      "Python 3.8+", "Pandas", "Scikit-learn", "SQL", "PostgreSQL", "SQLAlchemy", "Tableau", "Power BI", "Plotly", "Matplotlib"
+    ],
+    "key_achievements": [
+      "Reduced experimental workflow inefficiencies by 20% and increased operational capacity by 25% at PTB",
+      "Improved measurement accuracy by 15% managing 300+ weekly datasets",
+      "Unified 5.4M+ session records with user, flight, and hotel data via a 3-stage SQL CTE pipeline",
+      "Engineered 50+ behavioral features across 49,211 sessions and 5,998 customers for segmentation",
+      "Delivered interactive Tableau dashboards for FIFA 2023 and Unicorn sales/KPI analysis"
+    ]
+  },
+  "stats": {
+    "projects": 7,
+    "categories": 4,
+    "languages": ["Python", "SQL"],
+    "business_impact": {
+      "measurement_accuracy_improvement": "15% (PTB)",
+      "workflow_efficiency_gain": "20-25% (PTB)",
+      "sessions_unified": "5,408,063 → 49,211 enriched base_sessions",
+      "customers_segmented": "5,998",
+      "behavioral_features_engineered": "50+"
+    }
+  },
+  "keywords": [
+    "Data Science", "Machine Learning", "Customer Segmentation", "K-Means Clustering", "SQL", "PostgreSQL",
+    "CTEs", "Data Quality", "EDA", "Feature Engineering", "Tableau", "Power BI", "Python", "Pandas",
+    "Scikit-learn", "Statistical Testing", "Business Intelligence", "TravelTide", "Applied Physics"
+  ]
+}
