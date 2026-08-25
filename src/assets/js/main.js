@@ -658,11 +658,9 @@ function initCarousel() {
             const x = Math.sin(rad)*radius;
             const z = Math.cos(rad)*radius - radius;
 
-            // Calculate scale: current project is largest (1.0), others smaller
             const distanceFromCenter = Math.abs(adj);
             const isCurrent = adj === 0;
 
-            // Scale: current = 1.0, adjacent = 0.7, further = 0.4
             let scale;
             if (isCurrent) {
                 scale = 1.0;
@@ -674,7 +672,6 @@ function initCarousel() {
                 scale = 0.35;
             }
 
-            // Opacity: current fully visible, others faded
             let opacity;
             if (isCurrent) {
                 opacity = 1.0;
@@ -686,7 +683,6 @@ function initCarousel() {
                 opacity = 0.1;
             }
 
-            // Blur: only current is sharp, others are blurred
             let blurAmount = 0;
             if (!isCurrent) {
                 if (distanceFromCenter === 1) {
@@ -698,17 +694,14 @@ function initCarousel() {
                 }
             }
 
-            // Brightness filter: current bright, others darkened
             let brightness = isCurrent ? 1 : 0.4;
 
-            // Apply styles with 3D transform
             item.style.transform = `translateX(-50%) translateY(-50%) translateX(${x}px) translateZ(${z}px) scale(${scale})`;
             item.style.opacity = opacity;
             item.style.filter = `blur(${blurAmount}px) brightness(${brightness})`;
             item.style.zIndex = isCurrent ? 100 : Math.round(scale * 50);
             item.style.transition = 'transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.5s ease, filter 0.5s ease';
 
-            // Add a special class for the current item for additional styling if needed
             if (isCurrent) {
                 item.classList.add('current');
                 item.classList.remove('non-current');
@@ -783,12 +776,10 @@ function initNavbar() {
    ADVANCED BIDIRECTIONAL SCROLL ANIMATION ENGINE
    ================================================================ */
 function initRevealObserver() {
-    // Track last scroll position to determine direction
     let lastScrollY = window.scrollY;
     let scrollDirection = 'down';
     let ticking = false;
 
-    // Update scroll direction on scroll
     window.addEventListener('scroll', () => {
         if (!ticking) {
             requestAnimationFrame(() => {
@@ -801,11 +792,9 @@ function initRevealObserver() {
         }
     }, { passive: true });
 
-    // Store each element's animation state
     const elementStates = new WeakMap();
 
     function getAnimationProps(el, direction) {
-        // Determine base animation type
         const isRevealLeft = el.classList.contains('reveal-left');
         const isRevealRight = el.classList.contains('reveal-right');
         const isRevealScale = el.classList.contains('reveal-scale');
@@ -816,15 +805,12 @@ function initRevealObserver() {
             if (isRevealRight) return { from: 'translateX(36px)',   to: 'translateX(0)' };
             if (isRevealScale) return { from: 'scale(0.88)',         to: 'scale(1)' };
             if (isRevealFade)  return { from: 'translateY(0)',       to: 'translateY(0)' };
-            // Default .reveal: come from below
             return { from: 'translateY(36px)', to: 'translateY(0)' };
         } else {
-            // Scrolling UP: reverse the entry direction for a natural feel
             if (isRevealLeft)  return { from: 'translateX(36px)',   to: 'translateX(0)' };
             if (isRevealRight) return { from: 'translateX(-36px)',  to: 'translateX(0)' };
             if (isRevealScale) return { from: 'scale(0.88)',         to: 'scale(1)' };
             if (isRevealFade)  return { from: 'translateY(0)',       to: 'translateY(0)' };
-            // Default .reveal coming back up: come from above
             return { from: 'translateY(-36px)', to: 'translateY(0)' };
         }
     }
@@ -836,15 +822,12 @@ function initRevealObserver() {
         const delay = parseInt(el.style.transitionDelay) || 0;
         const props = getAnimationProps(el, direction);
 
-        // Reset to hidden state immediately (no transition)
         el.style.transition = 'none';
         el.style.opacity = '0';
         el.style.transform = props.from;
 
-        // Force reflow
         el.getBoundingClientRect();
 
-        // Apply entrance transition
         el.style.transition = `opacity 0.72s cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform 0.72s cubic-bezier(0.22,1,0.36,1) ${delay}ms`;
 
         requestAnimationFrame(() => {
@@ -861,20 +844,17 @@ function initRevealObserver() {
         const state = elementStates.get(el) || {};
         if (!state.visible) return;
 
-        // When leaving, exit in the scroll direction (opposite of entry)
         let exitTransform;
         const isRevealLeft = el.classList.contains('reveal-left');
         const isRevealRight = el.classList.contains('reveal-right');
         const isRevealScale = el.classList.contains('reveal-scale');
 
         if (direction === 'down') {
-            // Scrolling down, element exits upward
             if (isRevealLeft)  exitTransform = 'translateX(-28px)';
             else if (isRevealRight) exitTransform = 'translateX(28px)';
             else if (isRevealScale) exitTransform = 'scale(0.92)';
             else exitTransform = 'translateY(-28px)';
         } else {
-            // Scrolling up, element exits downward
             if (isRevealLeft)  exitTransform = 'translateX(28px)';
             else if (isRevealRight) exitTransform = 'translateX(-28px)';
             else if (isRevealScale) exitTransform = 'scale(0.92)';
@@ -888,10 +868,6 @@ function initRevealObserver() {
         elementStates.set(el, { animating: 'out', visible: false });
     }
 
-    // Section-level observer: track which section is in view to coordinate child animations
-    const sectionVisibility = new Map();
-
-    // Main element observer with generous margin so reset happens before re-entry
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             const el = entry.target;
@@ -906,17 +882,13 @@ function initRevealObserver() {
         rootMargin: '0px 0px -5% 0px'
     });
 
-    // Observe all animatable elements
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-fade').forEach(el => {
-        // Set initial hidden state
         el.style.opacity = '0';
         el.style.transform = 'translateY(28px)';
         elementStates.set(el, { animating: null, visible: false });
         revealObserver.observe(el);
     });
 
-    // Also re-observe any dynamically added elements (e.g. from renderSkills)
-    // Use a MutationObserver to catch late-rendered DOM nodes
     const mutationObs = new MutationObserver((mutations) => {
         mutations.forEach(mutation => {
             mutation.addedNodes.forEach(node => {
@@ -932,7 +904,6 @@ function initRevealObserver() {
                         revealObserver.observe(el);
                     }
                 });
-                // Also check if the node itself is animatable
                 if (node.classList && (
                     node.classList.contains('reveal') ||
                     node.classList.contains('reveal-left') ||
@@ -959,10 +930,8 @@ function initRevealObserver() {
    FIXED IMAGE BEHIND CONTENT
    ================================================================ */
 function initFixedImage() {
-    // Select the image container
     const imageContainer = document.querySelector('.fixed-image-container');
 
-    // Select all content elements (text, boxes, etc.)
     const contentElements = document.querySelectorAll(
         '.content, .box, .glass, .section, .hero, .about, .skills, .projects, ' +
         '.experience, .education, .certifications, .contact, .navbar, ' +
@@ -975,21 +944,19 @@ function initFixedImage() {
         return;
     }
 
-    // Style the image container to be fixed and behind content
     Object.assign(imageContainer.style, {
         position: 'fixed',
         right: '20px',
         top: '50%',
         transform: 'translateY(-50%)',
-        zIndex: '0', // Behind all content but in front of background
+        zIndex: '0',
         height: '80vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        pointerEvents: 'none' // Allow clicks to pass through the image
+        pointerEvents: 'none'
     });
 
-    // Ensure all content elements have a higher z-index than the image
     contentElements.forEach(element => {
         if (element === imageContainer) return;
         if (element.style.zIndex === '' || parseInt(element.style.zIndex) <= 0) {
@@ -998,7 +965,6 @@ function initFixedImage() {
         }
     });
 
-    // Ensure the background stays behind everything
     const backgroundElement = document.querySelector('.app-bg');
     if (backgroundElement) {
         backgroundElement.style.zIndex = '-2';
@@ -1006,7 +972,7 @@ function initFixedImage() {
 }
 
 /* ================================================================
-   AI CHATBOT Deepseek AI INTEGRATION
+   AI CHATBOT - With Professional Fallback (No AI Required)
    ================================================================ */
 
 function initChatbot() {
@@ -1029,7 +995,6 @@ function initChatbot() {
        TOKEN HANDLING - Uses PUBLIC token as fallback
     ============================================================ */
 
-    // Helper to get token (public or user-provided)
     function getChatToken() {
         return localStorage.getItem('HF_TOKEN') ||
                sessionStorage.getItem('HF_TOKEN') ||
@@ -1038,12 +1003,275 @@ function initChatbot() {
     }
 
     let HF_TOKEN = getChatToken();
-
-    // Log token status (without exposing the token)
-    console.log('🔑 Chatbot token:', HF_TOKEN ? '✅ Found' : '❌ Not found - using local fallback');
+    console.log('🔑 Chatbot token:', HF_TOKEN ? '✅ Found' : '❌ Not found - using professional fallback');
 
     /* ============================================================
-       SYSTEM PROMPT BUILDER
+       PROFESSIONAL FALLBACK - NO AI REQUIRED
+       All responses use portfolio DATA directly
+    ============================================================ */
+
+    function getProfessionalFallback(question) {
+        const q = question.toLowerCase().trim();
+
+        // ============================================
+        // GREETINGS
+        // ============================================
+        if (/^(hi|hello|hey|greetings|good morning|good afternoon|start|begin|bonjour|hallo)/i.test(q)) {
+            return `<h3>👋 Welcome to Claudia's Portfolio!</h3>
+                    <p>I'm <strong>Claudia Tagbo-Fotso's AI Assistant</strong>. I can answer questions about her:</p>
+                    <ul>
+                        <li>📊 <strong>${DATA.projects.length} projects</strong> across 4 categories</li>
+                        <li>🛠️ <strong>Technical skills</strong> — Python, SQL, ML, Tableau, Power BI</li>
+                        <li>🎓 <strong>Education & Certifications</strong></li>
+                        <li>💼 <strong>Work Experience</strong> — 7+ years at PTB</li>
+                        <li>📞 <strong>Contact information</strong></li>
+                    </ul>
+                    <p><em>💡 Try asking: "What projects has Claudia worked on?" or "What SQL skills does she have?"</em></p>`;
+        }
+
+        // ============================================
+        // ABOUT CLAUDIA
+        // ============================================
+        if (/(who|about|claudia|profile|background|introduce|tell me about yourself|bio|who is)/i.test(q)) {
+            const metadata = DATA.portfolio_metadata;
+            const summary = DATA.summary;
+            const education = DATA.education;
+            const skills = DATA.skills;
+
+            return `<h3>👩‍💻 About Claudia Tagbo-Fotso</h3>
+                    <p><strong>${metadata.owner}</strong> is a <strong>${metadata.title}</strong> based in <strong>${metadata.location}</strong>.</p>
+                    <p>${summary.elevator_pitch}</p>
+                    <p><strong>🎓 Education:</strong> ${education.map(e => `${e.degree} from ${e.institution}`).join(' • ')}</p>
+                    <p><strong>🌍 Languages:</strong> ${skills.languages.map(l => `${l.language} (${l.proficiency})`).join(' • ')}</p>
+                    <p><strong>✨ Open to:</strong> Data Scientist and Data Analyst roles in Germany!</p>
+                    <p><strong>📧 Email:</strong> <a href="mailto:${metadata.email}">${metadata.email}</a></p>`;
+        }
+
+        // ============================================
+        // SKILLS & TECHNOLOGIES
+        // ============================================
+        if (/(skill|tech|stack|technology|tool|python|sql|tableau|pandas|scikit|power bi|postgresql|alchemy|expertise)/i.test(q)) {
+            const technical = DATA.skills.technical || {};
+            let response = `<h3>🛠️ Technical Skills</h3>`;
+
+            const skillMap = {
+                'data_science': '📊 Data Science',
+                'machine_learning': '🤖 Machine Learning',
+                'generative_ai': '✨ Generative AI',
+                'data_visualization': '📈 Data Visualization',
+                'databases': '🗄️ Databases',
+                'programming': '💻 Programming',
+                'scientific_technical': '🔬 Scientific & Technical'
+            };
+
+            for (const [key, label] of Object.entries(skillMap)) {
+                if (technical[key] && technical[key].length) {
+                    response += `<p><strong>${label}:</strong> ${technical[key].join(', ')}</p>`;
+                }
+            }
+
+            return response;
+        }
+
+        // ============================================
+        // PROJECTS OVERVIEW
+        // ============================================
+        if (/(project|portfolio|work|build|create|develop|show|list)/i.test(q) && !/(sql|cte|segment|tableau|database|pipeline)/i.test(q)) {
+            const categories = DATA.categories;
+            const projects = DATA.projects;
+
+            let response = `<h3>🚀 ${projects.length} Production-Grade Projects</h3>`;
+
+            categories.forEach(cat => {
+                const catProjects = projects.filter(p => p.category_id === cat.category_id);
+                if (catProjects.length) {
+                    response += `<p><strong>${cat.icon} ${cat.name}:</strong> ${catProjects.map(p => p.name).join(' • ')}</p>`;
+                }
+            });
+
+            response += `<p>💡 <em>Scroll the interactive 3D carousel above to explore all projects!</em></p>`;
+            return response;
+        }
+
+        // ============================================
+        // SQL CTE PIPELINE
+        // ============================================
+        if (/(sql cte|cte|traveltide sql|session pipeline|pipeline|cte architecture|user session|sql pipeline)/i.test(q)) {
+            const project = DATA.projects.find(p => p.project_id === 2);
+            return `<h3>🗄️ User Session Analytics Pipeline</h3>
+                    <p><strong>Project:</strong> ${project.name}</p>
+                    <p><strong>Description:</strong> ${project.description}</p>
+                    <p><strong>Technologies:</strong> ${project.technologies.join(', ')}</p>
+                    <p><strong>Key Metrics:</strong> ${Object.entries(project.key_metrics).map(([k, v]) => `${k}: ${v}`).join(' • ')}</p>
+                    <p><strong>Impact:</strong> ${project.insight}</p>
+                    <p><strong>🔗 GitHub:</strong> <a href="${project.github_url}" target="_blank">View on GitHub</a></p>`;
+        }
+
+        // ============================================
+        // SEGMENTATION PROJECT
+        // ============================================
+        if (/(segment|kmeans|k-means|cluster|rfm|segmentation|customer segmentation|clustering)/i.test(q)) {
+            const project = DATA.projects.find(p => p.project_id === 4);
+            return `<h3>🎯 Customer Segmentation & Performance Analysis</h3>
+                    <p><strong>Description:</strong> ${project.description}</p>
+                    <p><strong>Technologies:</strong> ${project.technologies.join(', ')}</p>
+                    <p><strong>Key Metrics:</strong> ${Object.entries(project.key_metrics).map(([k, v]) => `${k}: ${v}`).join(' • ')}</p>
+                    <p><strong>Impact:</strong> ${project.insight}</p>
+                    <p><strong>🔗 GitHub:</strong> <a href="${project.github_url}" target="_blank">View on GitHub</a></p>`;
+        }
+
+        // ============================================
+        // TABLEAU / DASHBOARDS
+        // ============================================
+        if (/(tableau|dashboard|fifa|unicorn|kpi|visualization|visual|bi|business intelligence)/i.test(q)) {
+            return `<h3>📊 Tableau Dashboards</h3>
+                    <p><strong>FIFA 2023 Player Performance Analytics:</strong> Interactive Tableau dashboards for cross-league, cross-nation, and cross-position comparison. Clustering players by performance and market value.</p>
+                    <p><strong>Unicorn Sales & KPI Dashboard:</strong> Multi-source KPI dashboard integrating multiple data sources to analyze sales, profit, and key performance indicators.</p>
+                    <p><strong>Technologies:</strong> Tableau, Python, SQL</p>
+                    <p><strong>Key Features:</strong> Interactive dashboards • Revenue, profit tracking • Category performance analysis</p>`;
+        }
+
+        // ============================================
+        // MACHINE LEARNING
+        // ============================================
+        if (/(machine learning|ml|algorithm|model|regression|classification|predict|forecast|supervised|unsupervised)/i.test(q)) {
+            const technical = DATA.skills.technical || {};
+            return `<h3>🤖 Machine Learning Expertise</h3>
+                    <p><strong>Core Skills:</strong> ${(technical.machine_learning || []).join(', ')}</p>
+                    <p><strong>Portfolio Application:</strong> Customer Segmentation using K-Means clustering on 5,998 customers with 50+ behavioral features</p>
+                    <p><strong>Validation:</strong> Statistical testing with χ², t-test, and Mann–Whitney U tests</p>
+                    <p><strong>Key Achievement:</strong> Engineered 50+ RFM and engagement features for targeted retention strategies</p>`;
+        }
+
+        // ============================================
+        // EDUCATION
+        // ============================================
+        if (/(education|degree|university|college|school|academic|study|master|bachelor|studied)/i.test(q)) {
+            const education = DATA.education;
+            let response = `<h3>🎓 Educational Background</h3>`;
+
+            education.forEach(e => {
+                response += `<p><strong>${e.institution}</strong><br>${e.degree} (${e.period.start} — ${e.period.end})<br>`;
+                if (e.highlights && e.highlights.length) {
+                    response += e.highlights.map(h => `• ${h}`).join('<br>');
+                }
+                response += `</p>`;
+            });
+
+            return response;
+        }
+
+        // ============================================
+        // EXPERIENCE
+        // ============================================
+        if (/(experience|work|job|career|ptb|physikalisch|engineer|professional|employed)/i.test(q)) {
+            const experience = DATA.experience;
+            let response = `<h3>💼 Work Experience</h3>`;
+
+            experience.forEach(e => {
+                response += `<p><strong>${e.company}</strong><br>${e.role} (${e.period.start} — ${e.period.end})<br>${e.location}</p>`;
+                if (e.responsibilities && e.responsibilities.length) {
+                    response += `<ul>${e.responsibilities.slice(0, 5).map(r => `<li>${r}</li>`).join('')}</ul>`;
+                }
+            });
+
+            return response;
+        }
+
+        // ============================================
+        // CONTACT
+        // ============================================
+        if (/(contact|email|phone|reach|hire|connect|linkedin|github|call|message)/i.test(q)) {
+            const metadata = DATA.portfolio_metadata;
+            return `<h3>📞 Contact Information</h3>
+                    <p><strong>📧 Email:</strong> <a href="mailto:${metadata.email}">${metadata.email}</a></p>
+                    <p><strong>📞 Phone:</strong> ${metadata.phone}</p>
+                    <p><strong>💻 GitHub:</strong> <a href="${metadata.github}" target="_blank">${metadata.github}</a></p>
+                    <p><strong>🔗 LinkedIn:</strong> <a href="${metadata.linkedin}" target="_blank">${metadata.linkedin}</a></p>
+                    <p><strong>📍 Location:</strong> ${metadata.location}</p>
+                    <p><strong>✨ Availability:</strong> Open to Data Scientist and Data Analyst roles in Germany!</p>`;
+        }
+
+        // ============================================
+        // AI ASSISTANT SELF-IDENTIFICATION
+        // ============================================
+        if (/(where are you|who are you|what are you|yourself|ai assistant|your name|what can you do|are you ai)/i.test(q)) {
+            return `<h3>🤖 About Me</h3>
+                    <p>I'm <strong>Claudia's AI Assistant</strong>, an intelligent chatbot integrated into this portfolio website.</p>
+                    <p><strong>What I can help with:</strong></p>
+                    <ul>
+                        <li>📊 <strong>About Claudia</strong> — background, education, languages, location</li>
+                        <li>🛠️ <strong>Skills & Technologies</strong> — ML, Python, SQL, Tableau, etc.</li>
+                        <li>🚀 <strong>Projects</strong> — ${DATA.projects.length} projects across ${DATA.categories.length} categories</li>
+                        <li>🎓 <strong>Education & Certifications</strong></li>
+                        <li>💼 <strong>Work Experience</strong></li>
+                        <li>📞 <strong>Contact Information</strong></li>
+                    </ul>
+                    <p><em>💡 I have access to all portfolio data — feel free to ask anything!</em></p>`;
+        }
+
+        // ============================================
+        // TRAVELTIDE ANALYTICS ENGINE
+        // ============================================
+        if (/(traveltide|analytics engine|core module|eda|feature engineering|perk assignment)/i.test(q)) {
+            const project = DATA.projects.find(p => p.project_id === 1);
+            if (project) {
+                return `<h3>🧩 ${project.name}</h3>
+                        <p><strong>Description:</strong> ${project.description}</p>
+                        <p><strong>Technologies:</strong> ${project.technologies.join(', ')}</p>
+                        <p><strong>Key Metrics:</strong> ${Object.entries(project.key_metrics).map(([k, v]) => `${k}: ${v}`).join(' • ')}</p>
+                        <p><strong>Impact:</strong> ${project.insight}</p>
+                        <p><strong>🔗 GitHub:</strong> <a href="${project.github_url}" target="_blank">View on GitHub</a></p>`;
+            }
+        }
+
+        // ============================================
+        // DATA QUALITY / LOADING
+        // ============================================
+        if (/(data quality|loading|quality assessment|missing|eda|loader)/i.test(q)) {
+            const project = DATA.projects.find(p => p.project_id === 3);
+            if (project) {
+                return `<h3>📥 ${project.name}</h3>
+                        <p><strong>Description:</strong> ${project.description}</p>
+                        <p><strong>Technologies:</strong> ${project.technologies.join(', ')}</p>
+                        <p><strong>Key Metrics:</strong> ${Object.entries(project.key_metrics).map(([k, v]) => `${k}: ${v}`).join(' • ')}</p>
+                        <p><strong>Impact:</strong> ${project.insight}</p>
+                        <p><strong>🔗 GitHub:</strong> <a href="${project.github_url}" target="_blank">View on GitHub</a></p>`;
+            }
+        }
+
+        // ============================================
+        // CHINOOK MOCK INTERVIEW
+        // ============================================
+        if (/(chinook|mock interview|interview|database|neon|postgres)/i.test(q) && !/sql/i.test(q)) {
+            const project = DATA.projects.find(p => p.project_id === 7);
+            if (project) {
+                return `<h3>🎵 ${project.name}</h3>
+                        <p><strong>Description:</strong> ${project.description}</p>
+                        <p><strong>Technologies:</strong> ${project.technologies.join(', ')}</p>
+                        <p><strong>Key Metrics:</strong> ${Object.entries(project.key_metrics).map(([k, v]) => `${k}: ${v}`).join(' • ')}</p>
+                        <p><strong>Impact:</strong> ${project.insight}</p>
+                        <p><strong>🔗 GitHub:</strong> <a href="${project.github_url}" target="_blank">View on GitHub</a></p>`;
+            }
+        }
+
+        // ============================================
+        // DEFAULT - HELP
+        // ============================================
+        return `<h3>🤔 How Can I Help?</h3>
+                <p>I can provide information about Claudia's portfolio, skills, and experience. Try asking:</p>
+                <ul>
+                    <li><strong>"Who is Claudia Tagbo-Fotso?"</strong> — Background and profile</li>
+                    <li><strong>"What projects has she worked on?"</strong> — Project overview</li>
+                    <li><strong>"What SQL skills does she have?"</strong> — Technical skills</li>
+                    <li><strong>"Tell me about the segmentation project"</strong> — Specific project</li>
+                    <li><strong>"How can I contact her?"</strong> — Contact information</li>
+                </ul>
+                <p><em>💡 I have access to all portfolio data — feel free to ask anything!</em></p>`;
+    }
+
+    /* ============================================================
+       SYSTEM PROMPT BUILDER (for AI mode)
     ============================================================ */
     function buildSystemPrompt() {
         const projectSummaries = DATA.projects.map(p => `
@@ -1066,7 +1294,6 @@ You are Claudia Tagbo-Fotso's professional AI assistant for her data science por
 • Use <h3>, <p>, <ul>, <li>, <strong> for structure
 • Keep responses under 150 words
 • Never fabricate metrics or projects
-• You are Claudia's AI assistant running in the browser
 
 === PORTFOLIO OWNER PROFILE ===
 Name: ${DATA.portfolio_metadata.owner}
@@ -1104,7 +1331,6 @@ ${projectSummaries}
         const msg = document.createElement("div");
         msg.className = `msg ${role}`;
 
-        // Convert double line breaks → paragraphs
         const formatted = htmlContent
             .split(/\n{2,}/)
             .map(block => `<p>${block.replace(/\n/g, "<br>")}</p>`)
@@ -1141,32 +1367,9 @@ ${projectSummaries}
     }
 
     /* ============================================================
-       LOCAL FALLBACK
-    ============================================================ */
-    function localFallback(question) {
-        const q = question.toLowerCase();
-
-        if (/(where are you|who are you|what are you)/i.test(q)) {
-            return `<h3>About Me</h3><p>I'm <strong>Claudia's AI Assistant</strong>, running directly in your browser.</p>`;
-        }
-        if (/(who|about|claudia|profile)/i.test(q)) {
-            return `<h3>About Claudia</h3><p><strong>${DATA.portfolio_metadata.owner}</strong> is a ${DATA.portfolio_metadata.title} based in ${DATA.portfolio_metadata.location}.</p>`;
-        }
-        if (/(skill|tech|stack)/i.test(q)) {
-            return `<h3>Technical Skills</h3><p>Python, SQL, Pandas, Scikit-learn, Tableau, Power BI, PostgreSQL, SQLAlchemy.</p>`;
-        }
-        if (/(project|portfolio)/i.test(q)) {
-            return `<h3>Portfolio Overview</h3><p>Claudia has <strong>${DATA.projects.length}</strong> projects across 4 categories.</p>`;
-        }
-
-        return `<p>I can help with Claudia's projects, skills, or data science concepts.</p>`;
-    }
-
-    /* ============================================================
-       API CALLS - Uses public token as fallback
+       API CALLS - Uses public token
     ============================================================ */
     async function callDeepSeekOpenAI(messages) {
-        // Get token (public or user-provided)
         const token = getChatToken();
 
         if (!token) {
@@ -1201,7 +1404,7 @@ ${projectSummaries}
     }
 
     /* ============================================================
-       SEND MESSAGE
+       SEND MESSAGE - With Professional Fallback
     ============================================================ */
     async function send(text) {
         if (!text.trim() || isLoading) return;
@@ -1218,23 +1421,44 @@ ${projectSummaries}
         showTyping();
 
         let aiResponse = null;
+        let usedAI = false;
 
-        // Get token (public or user-provided)
         const token = getChatToken();
 
         if (token) {
-            const messages = [
-                { role: "system", content: SYSTEM_PROMPT },
-                ...conversationHistory
-            ];
+            try {
+                const messages = [
+                    { role: "system", content: SYSTEM_PROMPT },
+                    ...conversationHistory
+                ];
 
-            aiResponse = await callDeepSeekOpenAI(messages);
-            if (!aiResponse) aiResponse = localFallback(text);
+                const response = await callDeepSeekOpenAI(messages);
+                if (response) {
+                    aiResponse = response;
+                    usedAI = true;
+                } else {
+                    console.log('🔄 API returned null, using professional fallback');
+                    aiResponse = getProfessionalFallback(text);
+                    usedAI = false;
+                }
+            } catch (error) {
+                console.error('❌ API Error:', error);
+                aiResponse = getProfessionalFallback(text);
+                usedAI = false;
+            }
         } else {
-            aiResponse = localFallback(text);
+            console.log('🔄 No token found, using professional fallback');
+            aiResponse = getProfessionalFallback(text);
+            usedAI = false;
         }
 
         hideTyping();
+
+        // Add note if using fallback
+        if (!usedAI) {
+            aiResponse += `<p style="font-size:0.7rem;color:var(--muted);margin-top:10px;border-top:1px solid rgba(255,255,255,0.05);padding-top:8px;">💡 <em>Using offline portfolio data (AI not available)</em></p>`;
+        }
+
         appendMessage("bot", aiResponse);
 
         conversationHistory.push({ role: "assistant", content: aiResponse });
@@ -1251,10 +1475,15 @@ ${projectSummaries}
     /* ============================================================
        INITIAL MESSAGE + SUGGESTIONS
     ============================================================ */
+    const tokenStatus = getChatToken() ? 'online' : 'offline';
+
     appendMessage("bot",
-        `<h3>Welcome 👋</h3>
+        `<h3>👋 Welcome to Claudia's Portfolio!</h3>
          <p>I'm <strong>Claudia's AI assistant</strong>, powered by DeepSeek AI.</p>
-         <p>Ask me about her <strong>${DATA.projects.length}</strong> projects, skills, or any data science concept!</p>`
+         <p>Ask me about her <strong>${DATA.projects.length}</strong> projects, skills, or any data science concept!</p>
+         <p style="font-size:0.75rem;color:var(--muted);margin-top:8px;">
+             ${tokenStatus === 'online' ? '🟢 AI is available' : '🟡 Running in offline mode with portfolio data'}
+         </p>`
     );
 
     suggEl.innerHTML = SUGGESTIONS
@@ -1298,7 +1527,6 @@ ${projectSummaries}
         }
     });
 }
-
 
 function showErrorMessage(message) {
     const container = document.createElement('div');
