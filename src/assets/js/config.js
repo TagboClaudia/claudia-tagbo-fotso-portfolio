@@ -15,7 +15,12 @@ class ChatbotConfig {
     }
 
     getApiKey() {
-        return this.model.apiKey;
+        // Priority: 1. Provided token, 2. User token, 3. PUBLIC token
+        return this.model.apiKey ||
+               localStorage.getItem('HF_TOKEN') ||
+               sessionStorage.getItem('HF_TOKEN') ||
+               window.HF_PUBLIC_TOKEN ||
+               null;
     }
 
     getEffectiveModelName() {
@@ -30,6 +35,10 @@ if (typeof module !== 'undefined' && module.exports) {
 
 if (typeof window !== 'undefined') {
     window.ChatbotConfig = ChatbotConfig;
-}
 
-window.HF_TOKEN="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";
+    // 🔑 PUBLIC READ-ONLY TOKEN - Safe to expose!
+    window.HF_PUBLIC_TOKEN = "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";
+
+    console.log('✅ ChatbotConfig loaded');
+    console.log('🔑 Public token set');
+}

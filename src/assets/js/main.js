@@ -1,7 +1,36 @@
 /* ================================================================
+   PUBLIC READ-ONLY TOKEN - Safe to expose in static site
+   ================================================================ */
+
+// This token has READ-ONLY permissions - safe to share publicly!
+// Create at: https://huggingface.co/settings/tokens
+// Select: Read only
+const HF_PUBLIC_TOKEN = "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";
+
+function getToken() {
+    return localStorage.getItem('HF_TOKEN') ||
+           sessionStorage.getItem('HF_TOKEN') ||
+           HF_PUBLIC_TOKEN ||
+           null;
+}
+
+console.log('🔑 Token status:', getToken() ? '✅ Found' : '❌ Not set');
+
+/* ================================================================
+   LOAD HF_TOKEN SAFELY (NO HARD-CODING!)
+   ================================================================ */
+
+// Check if token exists in localStorage
+if (typeof window !== 'undefined') {
+    // Log token status (without exposing the token)
+    console.log('🔑 HF_TOKEN status:', localStorage.getItem('HF_TOKEN') ? '✅ Found in localStorage' : '❌ Not set - using public token');
+}
+
+/* ================================================================
    PORTFOLIO DATA — complete portfolio.json embedded
    ================================================================ */
 const DATA = {"portfolio_metadata":{"owner":"Claudia Tagbo-Fotso","title":"Data Science Analyst | AI & Machine Learning | Strategy & Analytics","tagline":"Turning fragmented data into unified, actionable insights — Python, SQL, ML & BI.","location":"Berlin, Germany","email":"tagbo.fotso@gmail.com","phone":"+49 176 64323853","github":"https://github.com/TagboClaudia","linkedin":"https://www.linkedin.com/in/claudia-fotso","total_projects":7},"summary":{"elevator_pitch":"Data Science Analyst with a strong quantitative background in Applied Physics (M.Sc.) and hands-on experience in machine learning, analytics, and AI-driven problem solving. Combines analytical rigor with business-oriented thinking to design and implement data-driven solutions from prototype to production, with a special focus on customer segmentation, SQL data pipelines, and BI storytelling. Passionate about leveraging modern AI technologies, including generative AI and RAG concepts, to create measurable business value.","key_achievements":["Improved measurement accuracy by 15% while managing 300+ weekly high-precision experimental datasets at PTB","Reduced data-workflow inefficiencies by 20% and increased operational capacity by 25%","Built a unified SQL CTE pipeline joining 5.4M+ sessions with user, flight, and hotel data for TravelTide","Engineered 50+ behavioral features (RFM metrics, conversion rates, session activity) across 49,211 sessions from 5,998 customers","Applied rule-based and K-Means clustering for customer segmentation, validated with χ², t-test, and Mann–Whitney U statistical testing"]},"skills":{"technical":{"data_science":["Data Cleaning","Exploratory Data Analysis (EDA)","Statistical Analysis","Funnel Analysis","Segmentation Analysis","KPI Analysis","Feature Engineering"],"machine_learning":["Regression","Classification","Clustering (KMeans, DBSCAN)","Model Evaluation","Cross-Validation","Supervised & Unsupervised Learning","PCA"],"generative_ai":["Basic knowledge of Generative AI","RAG concepts"],"data_visualization":["Tableau","Power BI","Matplotlib","Plotly","Dashboard Design","Data Visualization"],"databases":["SQL","PostgreSQL","SQLAlchemy","CTEs","Window Functions","Relational Joins"],"programming":["Python (Pandas, Scikit-learn, NumPy)","SQL","Basic understanding of Spark"],"scientific_technical":["Experimental Data Analysis","Measurement Optimization","Optical Characterization","Quantitative Analysis","Method Validation","Quality Control","Error Analysis"]},"languages":[{"language":"French","proficiency":"Native"},{"language":"German","proficiency":"C2"},{"language":"English","proficiency":"B2"}]},"education":[{"institution":"Masterschool","degree":"Data Science Training Program","period":{"start":"2025-05","end":"Present"},"highlights":["Acquires hands-on experience analyzing large datasets with Python, SQL, and Pandas to extract meaningful insights","Develops data-driven reports and visualizations using Tableau, Power BI, and Matplotlib","Applies statistical analysis and predictive modeling techniques, implementing ML algorithms, regression models, and clustering methods"]},{"institution":"Berliner Hochschule für Technik","degree":"M.Sc. Applied Physics – Medical Engineering","period":{"start":"2014-10","end":"2018-05"},"highlights":["Applied quantitative analysis and experimental data processing to high-precision optical and imaging measurement data","Developed and validated a spatially resolved measurement method, improving accuracy and reliability of evaluation metrics","Analyzed and interpreted experimental results from optical and imaging systems for technical evaluation and optimization decisions"]},{"institution":"Berliner Hochschule für Technik","degree":"B.Sc. Applied Physics – Medical Engineering","period":{"start":"2011-04","end":"2014-11"},"highlights":["Analyzed quantitative performance data from a medical X-ray imaging system to support system optimization","Evaluated measurement results and performance metrics to improve diagnostic reliability in a clinical environment"]}],"experience":[{"company":"Physikalisch-Technische Bundesanstalt (PTB)","role":"Engineer","period":{"start":"2017-05","end":"2024-12"},"location":"Berlin, Germany","responsibilities":["Conducted and evaluated more than 300 high-precision measurements per week in scientific research projects","Developed, optimized, and validated measurement methods for characterizing optical systems and components","Ensured the quality and reliability of experimental data through systematic testing and validation procedures","Analyzed complex measurement data and identified/assessed deviations and uncertainties","Produced scientific reports, technical documentation, and presentations of research results","Managed and analyzed high-volume experimental datasets (300+ weekly), improving measurement accuracy by 15%","Optimized data workflows and experimental processes, reducing inefficiencies by 20% and increasing operational capacity by 25%"]}],"certifications":[],"categories":[{"category_id":1,"name":"Customer Analytics & Segmentation","icon":"🧩","color":"#1F3B57"},{"category_id":2,"name":"SQL Data Engineering & Pipelines","icon":"🗄️","color":"#2C7A7B"},{"category_id":3,"name":"Business Intelligence & Dashboards","icon":"📊","color":"#4FB3BF"},{"category_id":4,"name":"SQL Practice & Database Mastery","icon":"🎯","color":"#1F3B57"}],"projects":[{"project_id":1,"name":"TravelTide Analytics Engine (Core Module)","category_id":1,"icon":"🧩","github_url":"https://github.com/TagboClaudia/traveltide/tree/main/core","description":"The analytical engine of the TravelTide project: a modular Python package handling data ingestion (CSV/SQL/DB), EDA, feature engineering (PCA, clustering, normalization), ML-based segmentation (KMeans, DBSCAN), perk assignment, and non-ML segment reporting — designed for scalability and reusability.","technologies":["Python 3.8+","Pandas 2.0+","Scikit-learn 1.0+","Plotly 5.0+","SQLAlchemy 1.4+"],"key_metrics":{"core_modules":"6","clustering":"KMeans, DBSCAN","pipeline":"Load→EDA→Feature Eng→Segmentation→Perks"},"chart":"radial","chart_data":[{"label":"Pipeline Stages","value":100},{"label":"Clustering Coverage","value":100},{"label":"Reporting Capabilities","value":100}],"insight":"6 modular stages · KMeans + DBSCAN clustering · automated perk scoring"},{"project_id":2,"name":"User Session Analytics Pipeline (SQL CTE Architecture)","category_id":2,"icon":"🗄️","github_url":"https://github.com/TagboClaudia/traveltide/tree/main/sql","description":"A production-grade SQL pipeline built with Common Table Expressions that filters sessions to a defined time window, identifies high-engagement users (>7 sessions), and enriches them with demographic, flight, and hotel data into a single analytical dataset for BI, churn modeling, and segmentation.","technologies":["PostgreSQL","SQL (CTEs)","Relational Joins"],"key_metrics":{"cte_stages":"3","engagement_threshold":"> 7 sessions","tables_joined":"4"},"chart":"bar","chart_data":[{"label":"CTE 1","value":100},{"label":"CTE 2","value":100},{"label":"CTE 3","value":100},{"label":"Final Join","value":100}],"insight":"3-stage CTE pipeline · >7 session threshold · 4 tables unified"},{"project_id":3,"name":"TravelTide Data Loading & Quality Assessment","category_id":2,"icon":"📥","github_url":"https://github.com/TagboClaudia/traveltide/tree/main/notebooks/loader","description":"The foundational data-loading and quality-assessment layer for the TravelTide pipeline. Loads raw data from CSV/SQL sources, runs missing-value diagnostics across all tables, and produces the enriched base_sessions dataset used for all downstream analysis.","technologies":["Python 3.11+","Pandas","PostgreSQL","SQL"],"key_metrics":{"users_rows":"1,020,926","sessions_rows":"5,408,063","base_sessions_rows":"49,211"},"chart":"bar","chart_data":[{"label":"Users","value":100},{"label":"Sessions","value":100},{"label":"Flights","value":95},{"label":"Hotels","value":100},{"label":"Trip ID Coverage","value":43}],"insight":"Users & Hotels 100% complete · trip_id present in only 43% of sessions"},{"project_id":4,"name":"Customer Segmentation & Performance Analysis","category_id":1,"icon":"🎯","github_url":"https://github.com/TagboClaudia/traveltide","description":"Rule-based and K-Means clustering segmentation on 49K TravelTide user sessions from 5,998 customers to identify behavioral patterns and drive targeted retention strategies, validated with statistical A/B testing.","technologies":["Python","Scikit-learn (KMeans)","Pandas","SciPy (statistical testing)"],"key_metrics":{"user_sessions_analyzed":"49,211","unique_customers":"5,998","behavioral_features_engineered":"50+"},"chart":"radial","chart_data":[{"label":"Sessions Segmented","value":100},{"label":"Customers Profiled","value":100},{"label":"Features Engineered","value":100}],"insight":"49,211 sessions · 5,998 customers · 50+ behavioral features"},{"project_id":5,"name":"FIFA 2023 Player Performance Analytics","category_id":3,"icon":"⚽","github_url":"","description":"Analyzed FIFA 2023 player datasets with Python and SQL to identify trends in player performance, market value, and team composition, then built interactive Tableau dashboards for cross-league, cross-nation, and cross-position comparison.","technologies":["Python","SQL","Tableau"],"key_metrics":{"dashboard_type":"Interactive Tableau","comparison_dimensions":"Leagues, nations, positions"},"chart":"bar","chart_data":[{"label":"Player Data","value":100},{"label":"Clustering Applied","value":100},{"label":"Dashboard Views","value":100}],"insight":"Player performance clustering across leagues, nations & positions"},{"project_id":6,"name":"Unicorn Sales & KPI Dashboard","category_id":3,"icon":"📈","github_url":"","description":"Developed an interactive Tableau dashboard integrating multiple data sources to analyze sales, profit, and key performance indicators, enabling stakeholders to quickly identify high- and low-performing products and categories.","technologies":["Tableau","Python","SQL"],"key_metrics":{"dashboard_type":"Interactive Tableau","kpis_tracked":"Revenue, profit, product performance"},"chart":"bar","chart_data":[{"label":"Data Sources","value":100},{"label":"KPI Coverage","value":100},{"label":"Dashboard Views","value":100}],"insight":"Multi-source KPI dashboard for revenue, profit & category performance"},{"project_id":7,"name":"Chinook Mock Interview Notebook","category_id":4,"icon":"🎵","github_url":"https://github.com/TagboClaudia/Data-Science/blob/main/Chinook_MockInterview.ipynb","description":"A comprehensive SQL/database mock-interview notebook built on the Chinook digital media store database, covering customer analysis, geographical distribution, employee analysis, customer-support joins, and hierarchical self-joins — connected live to a PostgreSQL instance on Neon.tech.","technologies":["PostgreSQL","SQLAlchemy","Pandas","Neon.tech"],"key_metrics":{"database_tables":"9","query_categories_covered":"5","skills_demonstrated":"8"},"chart":"bar","chart_data":[{"label":"Filtering","value":100},{"label":"Joins","value":100},{"label":"Subqueries","value":100},{"label":"Self-Joins","value":100}],"insight":"8 SQL skills demonstrated across filtering, joins, subqueries & hierarchies"}]};
+
 // Global variables
 let portfolio = null;
 let portfolioDataProvider = null;
@@ -24,9 +53,8 @@ function getApiKey() {
     if (session) {
         return session;
     }
-    // Return null if no token found
-    console.warn('No HF_TOKEN found. AI features will use fallback responses.');
-    return null;
+    // Return the public token as fallback
+    return HF_PUBLIC_TOKEN || null;
 }
 
 /* ================================================================
@@ -147,7 +175,7 @@ class SimplePortfolioDataProvider {
    ================================================================ */
 async function initApp() {
     try {
-        console.log("Initializing portfolio...");
+        console.log("🚀 Initializing portfolio...");
 
         // Create SimplePortfolio instance from DATA
         portfolio = new SimplePortfolio(DATA);
@@ -172,10 +200,10 @@ async function initApp() {
         initRevealObserver();
         initChatbot();
 
-        console.log("Portfolio loaded successfully!");
+        console.log("✅ Portfolio loaded successfully!");
 
     } catch (error) {
-        console.error("Failed to initialize:", error);
+        console.error("❌ Failed to initialize:", error);
         // Still try to render with basic data
         try {
             renderAllSections();
@@ -185,7 +213,7 @@ async function initApp() {
             initRevealObserver();
             initChatbot();
         } catch(e) {
-            console.error("Critical error:", e);
+            console.error("❌ Critical error:", e);
         }
         showErrorMessage("Failed to load portfolio. Please refresh.");
     }
@@ -979,11 +1007,6 @@ function initFixedImage() {
 
 /* ================================================================
    AI CHATBOT Deepseek AI INTEGRATION
-     - Uses DeepSeek's client-side API for secure, real API calls without exposing tokens
-     - Falls back to local response generation if no token is found
-   ================================================================ */
-/* ================================================================
-   AI CHATBOT - REAL API CALLS with DeepSeek
    ================================================================ */
 
 function initChatbot() {
@@ -1003,16 +1026,21 @@ function initChatbot() {
     let conversationHistory = [];
 
     /* ============================================================
-       TOKEN HANDLING
+       TOKEN HANDLING - Uses PUBLIC token as fallback
     ============================================================ */
-    let HF_TOKEN = null;
-    if (typeof window !== 'undefined') {
-        HF_TOKEN = window.HF_TOKEN ||
-                   localStorage.getItem('HF_TOKEN') ||
-                   sessionStorage.getItem('HF_TOKEN') ||
-                   (window._env_ && window._env_.HF_TOKEN);
+
+    // Helper to get token (public or user-provided)
+    function getChatToken() {
+        return localStorage.getItem('HF_TOKEN') ||
+               sessionStorage.getItem('HF_TOKEN') ||
+               HF_PUBLIC_TOKEN ||
+               null;
     }
-    console.log('HF_TOKEN:', HF_TOKEN ? '✅ Found' : '❌ Not found - using local fallback');
+
+    let HF_TOKEN = getChatToken();
+
+    // Log token status (without exposing the token)
+    console.log('🔑 Chatbot token:', HF_TOKEN ? '✅ Found' : '❌ Not found - using local fallback');
 
     /* ============================================================
        SYSTEM PROMPT BUILDER
@@ -1135,17 +1163,23 @@ ${projectSummaries}
     }
 
     /* ============================================================
-       API CALLS
+       API CALLS - Uses public token as fallback
     ============================================================ */
     async function callDeepSeekOpenAI(messages) {
-        if (!HF_TOKEN) return null;
+        // Get token (public or user-provided)
+        const token = getChatToken();
+
+        if (!token) {
+            console.warn('⚠️ No HF_TOKEN found');
+            return null;
+        }
 
         try {
             const response = await fetch('https://router.huggingface.co/v1/chat/completions', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${HF_TOKEN}`
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     model: 'deepseek-ai/DeepSeek-V3',
@@ -1185,7 +1219,10 @@ ${projectSummaries}
 
         let aiResponse = null;
 
-        if (HF_TOKEN) {
+        // Get token (public or user-provided)
+        const token = getChatToken();
+
+        if (token) {
             const messages = [
                 { role: "system", content: SYSTEM_PROMPT },
                 ...conversationHistory

@@ -1,0 +1,42 @@
+# Environment variables (never commit!)
+.env
+.env.local
+.env.*.local
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+*.min.js
+*.min.css
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs
+logs/
+*.log
+
+# Secret files (just in case)
+*.secret
+*.pem
+*.key
+
+# Don't commit the old token if it's still anywhere
+**/*.txt
+!README.md
